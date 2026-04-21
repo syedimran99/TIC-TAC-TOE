@@ -1,27 +1,38 @@
+import java.util.Random;
+
 public class TicTacToe {
 
+    static char currentPlayer;
+    static char player1Symbol;
+    static char player2Symbol;
+
     public static void main(String[] args) {
-        char[][] board = new char[3][3];
 
-        // Initialize board with '-'
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                board[i][j] = '-';
-            }
-        }
+        // Perform toss
+        toss();
 
-        // Print the board
-        printBoard(board);
+        // Display result
+        System.out.println("Player 1 Symbol: " + player1Symbol);
+        System.out.println("Player 2 Symbol: " + player2Symbol);
+        System.out.println("First Turn: Player " + (currentPlayer == player1Symbol ? "1" : "2"));
     }
 
-    public static void printBoard(char[][] board) {
-        System.out.println("Tic-Tac-Toe Board:");
+    public static void toss() {
+        Random rand = new Random();
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(board[i][j] + " ");
-            }
-            System.out.println(); // Move to next row
+        // 0 or 1
+        int tossResult = rand.nextInt(2);
+
+        if (tossResult == 0) {
+            // Player 1 starts
+            currentPlayer = 'X';
+            player1Symbol = 'X';
+            player2Symbol = 'O';
+        } else {
+            // Player 2 starts
+            currentPlayer = 'X';
+            player2Symbol = 'X';
+            player1Symbol = 'O';
         }
     }
 }
